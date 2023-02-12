@@ -16,8 +16,9 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-
 PASSWORD = st.secrets["PASSWORD"]
+
+
 class VideoMashup:
     def __init__(self, singer_name, no_of_videos, audio_duration, result_file_name):
         self.singer_name = singer_name
@@ -109,6 +110,7 @@ def send_email(email, output_file):
         server.sendmail(sender_email, receiver_email, text)
 
 st.title("Video Mashup")
+st.title("Vibhav Shukla - 102003772")
 st.write("Enter the details to create a mashup")
 
 form = st.form(key='my_form')
