@@ -16,6 +16,8 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
+PASSWORD = st.secrets["PASSWORD"]
 class VideoMashup:
     def __init__(self, singer_name, no_of_videos, audio_duration, result_file_name):
         self.singer_name = singer_name
@@ -103,7 +105,7 @@ def send_email(email, output_file):
     text = message.as_string()
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, "zzqynujuowwjbknh")
+        server.login(sender_email, PASSWORD)
         server.sendmail(sender_email, receiver_email, text)
 
 st.title("Video Mashup")
