@@ -13,15 +13,17 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+st.title("Mashup MP3 Downloader")
+st.title('Vibhav Shukla - 102003772')
 form = st.form(key='my_form')
 
 name = form.text_input(label='Enter singer name')
-num_videos =  form.text_input(label='Enter number of videos')
-cut_duration = form.text_input(label='Enter cut duration in seconds')
+num_videos =  form.number_input("Enter the number of videos", min_value=1, max_value=20, value=10)
+audio_duration = form.number_input("Enter the audio duration", min_value=1, max_value=100, value=10)
 output_file = form.text_input(label='Enter output file name')
 email = form.text_input(label='Enter email')
 submit_button = form.form_submit_button(label='Submit')
-
+cut_duration = audio_duration
 PASSWORD = st.secrets["PASSWORD"]
 
 
@@ -109,7 +111,7 @@ def zipAudio():
 def sendEmail(email, result_file) : 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "sbahl_be20@thapar.edu"  # Enter your address
+    sender_email = "vshukla_be20@thapar.edu"  # Enter your address
     receiver_email = email  # Enter receiver address
 
         # Create a multipart message and set headers
