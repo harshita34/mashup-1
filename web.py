@@ -93,7 +93,7 @@ def send_email(email, output_file):
     message["To"] = receiver_email
     message["Subject"] = "Final Mashup as requested"
     message.attach(MIMEText("Please find the attached zip file.", "plain"))
-    zip_file = output_file + ".zip"
+    zip_file = os.getcwd() + '/' + output_file + ".zip"
     
     part = MIMEBase('application', "octet-stream")
     part.set_payload( open(zip_file,"rb").read() )   
